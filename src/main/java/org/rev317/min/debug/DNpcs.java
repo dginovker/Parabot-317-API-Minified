@@ -33,7 +33,7 @@ public class DNpcs extends AbstractDebugger {
                 return;
             }
             for (Npc n : Npcs.getNearest()) {
-                System.out.println("ID: " + n.getDef().getId() + " Distance: " + n.distanceTo() + " Location: " + n.getLocation().toString() + " Index: " + n.getIndex());
+                System.out.println("Name: " + n.getName() + " ID: " + n.getDef().getId() + " Distance: " + n.distanceTo() + " Location: " + n.getLocation().toString() + " Index: " + n.getIndex());
             }
         }
     }
