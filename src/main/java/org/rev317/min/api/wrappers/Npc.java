@@ -39,7 +39,7 @@ public final class Npc extends Character {
     * @return String of the Npc name
     */
     public String getName() {
-        return getAccessor().getName();
+        return getDef().getName();
     }
 
     /**
