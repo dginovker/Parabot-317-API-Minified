@@ -1,9 +1,11 @@
 package org.rev317.min;
 
+import org.objectweb.asm.tree.ClassNode;
 import org.parabot.core.Context;
 import org.parabot.core.Core;
 import org.parabot.core.Directories;
 import org.parabot.core.asm.ASMClassLoader;
+import org.parabot.core.asm.ASMUtils;
 import org.parabot.core.asm.adapters.AddInterfaceAdapter;
 import org.parabot.core.asm.hooks.HookFile;
 import org.parabot.core.desc.ServerProviderInfo;
@@ -20,6 +22,10 @@ import org.rev317.min.ui.BotMenu;
 import javax.swing.*;
 import java.applet.Applet;
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
 import java.net.URL;
 
 /**
@@ -35,18 +41,71 @@ public class Loader extends ServerProvider {
 
     @Override
     public Applet fetchApplet() {
+
         try {
             final Context        context     = Context.getInstance();
             final ASMClassLoader classLoader = context.getASMClassLoader();
             final Class<?>       clientClass = classLoader.loadClass(Context.getInstance().getServerProviderInfo().getClientClass());
-            Object               instance    = clientClass.newInstance();
+            Constructor<?> cons = clientClass.getDeclaredConstructor();
+            cons.setAccessible(true);
+            Object               instance    = cons.newInstance();
+
+
+            Class<?> classa = classLoader.loadClass("com.client.b.a");
+            Method methoda = classa.getDeclaredMethod("a");
+            methoda.setAccessible(true);
+            methoda.invoke(classa);
+            Core.debug("c");
+            Method ba = clientClass.getDeclaredMethod("ba");
+            ba.setAccessible(true);
+            ba.invoke(clientClass);
+            Class<?> classu = classLoader.loadClass("com.client.u");
+            Field C = classu.getDeclaredField("C");
+            C.setAccessible(true);
+            C.set(classu, "Xeros");
+            Field gw = clientClass.getDeclaredField("gw");
+            gw.setAccessible(true);
+            gw.setInt(clientClass, 1);
+            Field bo = clientClass.getDeclaredField("bo");
+            bo.setAccessible(true);
+            bo.setInt(clientClass, 0);
+            Method aX = clientClass.getDeclaredMethod("aX");
+            aX.setAccessible(true);
+            aX.invoke(clientClass);
+            Field gx = clientClass.getDeclaredField("gx");
+            gx.setAccessible(true);
+            gx.setBoolean(clientClass, true);
+            Class<?> classbs = classLoader.loadClass("com.client.bt");
+            Method p = classbs.getDeclaredMethod("p");
+            p.setAccessible(true);
+            p.invoke(classbs);
+            Field c = classa.getDeclaredField("c");
+            c.setAccessible(true);
+            c.setInt(classa, 32);
+            Method methodaa = classa.getDeclaredMethod("a", InetAddress.class);
+            methodaa.setAccessible(true);
+            methodaa.invoke(classa, InetAddress.getLocalHost());
+            Field Q = clientClass.getDeclaredField("Q");
+            Q.setAccessible(true);
+            Q.set(clientClass, instance);
+            Field T = clientClass.getDeclaredField("T");
+            T.setAccessible(true);
+            T.set(clientClass, instance);
+
+//            Method initClientFrame = clientClass.getSuperclass().getDeclaredMethod("g", int.class, int.class);
+//            initClientFrame.setAccessible(true);
+//            int width = 765;
+//            int height = 503;
+//            initClientFrame.invoke(clientClass, width, height);
 
             return (Applet) instance;
         } catch (Exception e) {
             e.printStackTrace();
-
-            return null;
         }
+
+
+
+        return null;
     }
 
     @Override
@@ -88,7 +147,7 @@ public class Loader extends ServerProvider {
 
     @Override
     public HookFile getHookFile() {
-        if (this.extended) {
+        if (false) {
             return new HookFile(Context.getInstance().getServerProviderInfo().getExtendedHookFile(), HookFile.TYPE_XML);
         } else {
             return new HookFile(Context.getInstance().getServerProviderInfo().getHookFile(), HookFile.TYPE_XML);
