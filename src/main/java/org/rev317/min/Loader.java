@@ -25,6 +25,7 @@ import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.net.InetAddress;
 import java.net.URL;
 
@@ -49,7 +50,6 @@ public class Loader extends ServerProvider {
             Constructor<?> cons = clientClass.getDeclaredConstructor();
             cons.setAccessible(true);
             Object               instance    = cons.newInstance();
-
 
             Class<?> classa = classLoader.loadClass("com.client.b.a");
             Method methoda = classa.getDeclaredMethod("a");
@@ -90,6 +90,18 @@ public class Loader extends ServerProvider {
             Field T = clientClass.getDeclaredField("T");
             T.setAccessible(true);
             T.set(clientClass, instance);
+
+
+
+
+            Class<?> levelClass = classLoader.loadClass("ch.qos.logback.classic.Level");
+            Method methodLogLevel = clientClass.getDeclaredMethod("a", levelClass);
+            methodLogLevel.setAccessible(true);
+
+            Field levelInfoField = levelClass.getDeclaredField("INFO");
+            levelInfoField.setAccessible(true);
+
+            methodLogLevel.invoke(instance, levelInfoField.get(levelInfoField));
 
             return (Applet) instance;
         } catch (Exception e) {
