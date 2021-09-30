@@ -33,8 +33,8 @@ public class SceneObject implements Locatable {
      *
      * @return hash
      */
-    public final int getHash() {
-        return (int) accessor.getHash();
+    public final long getHash() {
+        return accessor.getHash();
     }
 
     /**
@@ -91,7 +91,7 @@ public class SceneObject implements Locatable {
      * @return object id
      */
     public final int getId() {
-        return (int) accessor.getHash() >> 14 & 0x7FFF;
+        return (int)(accessor.getHash() >>> 32L) & Integer.MAX_VALUE;
     }
 
     /**

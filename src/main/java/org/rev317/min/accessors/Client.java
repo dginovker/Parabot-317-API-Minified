@@ -34,7 +34,7 @@ public interface Client {
 
     int[] getMenuActionId();
 
-    int[] getMenuAction1();
+    long[] getMenuAction1();
 
     int[] getMenuAction2();
 

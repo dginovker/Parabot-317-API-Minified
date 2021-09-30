@@ -4,9 +4,10 @@ package org.rev317.min.api.events;
  * @author Matt, Everel
  */
 public final class GameActionEvent {
-    private int index, cmd1, cmd2, cmd3, cmd4, action;
+    private int index, cmd2, cmd3, cmd4, action;
+    private long cmd1;
 
-    public GameActionEvent(int action, int cmd1, int cmd2, int cmd3, int cmd4, int index) {
+    public GameActionEvent(int action, long cmd1, int cmd2, int cmd3, int cmd4, int index) {
         this.action = action;
         this.cmd1 = cmd1;
         this.cmd2 = cmd2;
@@ -15,7 +16,7 @@ public final class GameActionEvent {
         this.index = index;
     }
 
-    public int getCmd1() {
+    public long getCmd1() {
         return cmd1;
     }
 
