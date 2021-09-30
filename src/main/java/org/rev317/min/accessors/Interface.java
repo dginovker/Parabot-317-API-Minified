@@ -6,6 +6,8 @@ public interface Interface {
 
     int[] getStackSizes();
 
+    int[] getChildren();
+
     /**
      * @return long version of #getStackSizes
      */

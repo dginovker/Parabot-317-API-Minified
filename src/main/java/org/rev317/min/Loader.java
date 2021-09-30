@@ -55,11 +55,10 @@ public class Loader extends ServerProvider {
             Method methoda = classa.getDeclaredMethod("a");
             methoda.setAccessible(true);
             methoda.invoke(classa);
-            Core.debug("c");
             Method ba = clientClass.getDeclaredMethod("ba");
             ba.setAccessible(true);
             ba.invoke(clientClass);
-            Class<?> classu = classLoader.loadClass("com.client.u");
+            Class<?> classu = classLoader.loadClass("com.client.t");
             Field C = classu.getDeclaredField("C");
             C.setAccessible(true);
             C.set(classu, "Xeros");
@@ -75,11 +74,11 @@ public class Loader extends ServerProvider {
             Field gx = clientClass.getDeclaredField("gx");
             gx.setAccessible(true);
             gx.setBoolean(clientClass, true);
-            Class<?> classbs = classLoader.loadClass("com.client.bt");
+            Class<?> classbs = classLoader.loadClass("com.client.bu");
             Method p = classbs.getDeclaredMethod("p");
             p.setAccessible(true);
             p.invoke(classbs);
-            Field c = classa.getDeclaredField("c");
+            Field c = classa.getDeclaredField("d");
             c.setAccessible(true);
             c.setInt(classa, 32);
             Method methodaa = classa.getDeclaredMethod("a", InetAddress.class);
@@ -91,12 +90,6 @@ public class Loader extends ServerProvider {
             Field T = clientClass.getDeclaredField("T");
             T.setAccessible(true);
             T.set(clientClass, instance);
-
-//            Method initClientFrame = clientClass.getSuperclass().getDeclaredMethod("g", int.class, int.class);
-//            initClientFrame.setAccessible(true);
-//            int width = 765;
-//            int height = 503;
-//            initClientFrame.invoke(clientClass, width, height);
 
             return (Applet) instance;
         } catch (Exception e) {
