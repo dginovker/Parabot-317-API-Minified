@@ -27,7 +27,7 @@ public class MenuAction {
     public static void intercept(int index) {
 
         Client client   = Loader.getClient();
-        int    action1  = client.getMenuAction1()[index];
+        long    action1  = client.getMenuAction1()[index];
         int    action2  = client.getMenuAction2()[index];
         int    action3  = client.getMenuAction3()[index];
         int    action4  = 0;

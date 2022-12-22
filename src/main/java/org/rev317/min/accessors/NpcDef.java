@@ -5,4 +5,6 @@ public interface NpcDef {
     int getId();
 
     long getLongId();
+
+    String getName();
 }

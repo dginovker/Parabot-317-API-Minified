@@ -12,6 +12,10 @@ public class NpcDef {
         this.accessor = accessor;
     }
 
+    public String getName() {
+        return accessor.getName();
+    }
+
     /**
      * Gets id of this item
      *
